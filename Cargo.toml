@@ -7,3 +7,22 @@ edition = "2021"
 
 [dependencies]
 leptos = { version = "0.5.2", features = ["csr", "nightly"] }
+leptos_router = {version = "0.5.2", features = ["csr", "nightly"] }
+gloo-console = "0.3.0"
+wasm-bindgen = "0.2.87"
+rand = "0.8.4"
+js-sys = "0.3.64"
+wasm-bindgen-futures = "0.4.38"
+
+[dependencies.web-sys]
+version = "0.3.64"
+features = [
+    "console",
+    "Document",
+    "HtmlElement",
+    "MouseEvent",
+    "PointerEvent",
+    "DomRect",
+    "ResizeObserver",
+    "ResizeObserverEntry",
+]

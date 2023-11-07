@@ -1,5 +1,6 @@
 use wasm_bindgen::UnwrapThrowExt;
 use web_sys::window;
+use crate::ProjectRoutes;
 
 pub fn set_title(title: &str) {
     let document = window().expect_throw("no global window exists").document().expect_throw("no global document exists");
@@ -31,4 +32,34 @@ pub async fn sleep(i: i32) {
             .unwrap();
     });
     wasm_bindgen_futures::JsFuture::from(sleep).await.unwrap();
+}
+
+pub fn project_url_to_paramter(url: &str) -> Option<ProjectRoutes> {
+    match url {
+        "hoops-forecast" => Some(ProjectRoutes::HoopsForecast),
+        "shot-quality" => Some(ProjectRoutes::ShotQuality),
+        "research" => Some(ProjectRoutes::Research),
+        "concussion-detection" => Some(ProjectRoutes::ConcussionDetection),
+        "daily-tweets" => Some(ProjectRoutes::DailyTweets),
+        "ev-betting" => Some(ProjectRoutes::EvBetting),
+        "perfect-pitch" => Some(ProjectRoutes::PerfectPitch),
+        "griffy-sharps" => Some(ProjectRoutes::GriffySharps),
+        "this-website" => Some(ProjectRoutes::ThisWebsite),
+        _ => None,
+    }
+}
+
+pub fn parameter_to_project_url(project: &ProjectRoutes) -> &str {
+    match project {
+        ProjectRoutes::HoopsForecast => "hoops-forecast",
+        ProjectRoutes::ShotQuality => "shot-quality",
+        ProjectRoutes::Research => "research",
+        ProjectRoutes::ConcussionDetection => "concussion-detection",
+        ProjectRoutes::DailyTweets => "daily-tweets",
+        ProjectRoutes::EvBetting => "ev-betting",
+        ProjectRoutes::PerfectPitch => "perfect-pitch",
+        ProjectRoutes::GriffySharps => "griffy-sharps",
+        ProjectRoutes::ThisWebsite => "this-website",
+        ProjectRoutes::Error => "error",
+    }
 }

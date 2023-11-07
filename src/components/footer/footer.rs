@@ -1,8 +1,8 @@
-use yew::*;
+use leptos::*;
 
-#[function_component(Footer)]
-pub fn footer() -> Html {
-    html! {
+#[component]
+pub fn footer() -> impl IntoView {
+    view! {
         <div class="footer">
             <h1>{ "Footer" }</h1>
         </div>
