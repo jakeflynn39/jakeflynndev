@@ -1,0 +1,42 @@
+@use "variables" as *;
+
+.hero {
+  padding: 60px 0;
+
+  .hero-text {
+    // make the width only the width of the text
+    display: inline-block;
+    h1 {
+      margin: 10px 0;
+      font-size: 108px;
+      font-weight: 700;
+      color: #d9dfe3;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 48px;
+      font-weight: 400;
+      color: #b7b7b7;
+      //   give a monospace font
+      font-family: "Roboto Mono", monospace;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 400;
+      color: #b7b7b7;
+      font-family: "Roboto Mono", monospace;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 200px;
+      height: 4px;
+      margin: 20px 0;
+      background-color: #d9dfe3;
+    }
+  }
+}

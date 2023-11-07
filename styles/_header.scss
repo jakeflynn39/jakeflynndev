@@ -1,0 +1,66 @@
+@use "variables" as *;
+
+header {
+  position: relative;
+  padding: 20px 0;
+
+  .header-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100px;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .logo {
+        flex: 1;
+        max-width: 70px;
+        height: auto;
+      }
+    }
+
+    .menu-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        a {
+          position: relative;
+          margin: 0 10px;
+          font-size: 1.2em;
+          font-weight: 300;
+          cursor: pointer;
+          text-decoration: none;
+
+          &:hover {
+            &::after {
+              width: 100%;
+              transform: translateX(-50%);
+            }
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            transform: translateX(-50%);
+            height: 2px;
+            background: #fff;
+            transition: width 0.2s;
+          }
+        }
+      }
+    }
+  }
+}
