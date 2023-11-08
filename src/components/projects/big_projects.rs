@@ -1,7 +1,6 @@
 use leptos::*;
 use crate::ProjectInfo;
 
-
 #[component]
 pub fn big_projects() -> impl IntoView {
     let big_projects: [ProjectInfo; 4] = [

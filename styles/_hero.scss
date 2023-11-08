@@ -2,6 +2,8 @@
 
 .hero {
   padding: 60px 0;
+  position: relative;
+  margin-bottom: 50px;
 
   .hero-text {
     // make the width only the width of the text
@@ -37,6 +39,53 @@
       height: 4px;
       margin: 20px 0;
       background-color: #d9dfe3;
+    }
+  }
+
+  .skills-scatter {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 20;
+    cursor: pointer;
+
+    .skill {
+      position: absolute;
+      top: var(--y);
+      left: var(--x);
+      font-size: var(--size);
+      opacity: 0;
+      scale: 1;
+      animation: fadeIn 1.2s ease-out forwards;
+      transition: opacity 0.3s ease-in-out;
+
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.08}s;
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(150px);
+        }
+        100% {
+          opacity: var(--opacity);
+          transform: translateY(0);
+        }
+      }
+
+      div {
+        // no wrapping
+        white-space: nowrap;
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
     }
   }
 }

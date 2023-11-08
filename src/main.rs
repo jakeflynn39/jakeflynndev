@@ -10,6 +10,9 @@ pub mod components {
     pub mod hero {
         pub mod hero;
     }
+    pub mod about {
+        pub mod about;
+    }
     pub mod projects {
         pub mod big_projects;
         pub mod small_projects;
@@ -24,6 +27,7 @@ pub mod routes {
 pub mod utils;
 use components::header::header::Header;
 use components::hero::hero::Hero;
+use components::about::about::About;
 use components::projects::big_projects::BigProjects;
 use components::projects::small_projects::SmallProjects;
 use components::footer::footer::Footer;
@@ -55,6 +59,7 @@ fn App() -> impl IntoView {
 fn home() -> impl IntoView {
     view! {
         <Hero />
+        <About />
         <BigProjects />
         <SmallProjects />
     }

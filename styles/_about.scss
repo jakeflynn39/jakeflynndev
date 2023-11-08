@@ -1,0 +1,14 @@
+@use "variables" as *;
+
+.about-me {
+  padding: 60px 0;
+
+  .about-section {
+    p {
+      font-size: 24px;
+      font-weight: 400;
+      color: #b7b7b7;
+      line-height: 1.5;
+    }
+  }
+}
