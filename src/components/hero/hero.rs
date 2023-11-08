@@ -51,7 +51,7 @@ pub fn hero() -> impl IntoView {
         Skills {
             name: "React".to_string(),
             x: 400,
-            y: 240,
+            y: 250,
             size: 50,
             opacity: 0.75,
         },
@@ -99,7 +99,7 @@ pub fn hero() -> impl IntoView {
         },
         Skills {
             name: "NodeJs".to_string(),
-            x: 350,
+            x: 400,
             y: 120,
             size: 50,
             opacity: 1.0,
@@ -179,7 +179,7 @@ pub fn hero() -> impl IntoView {
         sleep(50).await;
         for (i, _) in final_text.chars().enumerate() {
             let i_as_32 = i as i32;
-            sleep(23).await;
+            sleep(30).await;
 
             let random_string: String = (0..(final_text.len()) - 1)
                 .map(|_| rng.sample(&Alphanumeric) as char)

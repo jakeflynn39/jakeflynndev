@@ -57,6 +57,7 @@ fn App() -> impl IntoView {
 
 #[component]
 fn home() -> impl IntoView {
+    set_title("JAke's World");
     view! {
         <Hero />
         <About />

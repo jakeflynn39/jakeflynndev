@@ -46,7 +46,6 @@ pub fn big_projects() -> impl IntoView {
                             <div class="card-header">
                                 <h2>{ &project.name }</h2>
                                 <p>{ &project.description }</p>
-                                // <Link<Route> to={project.link.clone()}>{ "click here to go to project" }</Link<Route>>
                                 <a href={project.link.clone()}>{ "click here to go to project" }</a>
                             </div>
                             // { if let Some(image) = &project.image {
