@@ -136,7 +136,6 @@ header .header-container .menu-container .menu a::after {
 .hero {
   padding: 60px 0;
   position: relative;
-  margin-bottom: 50px;
 }
 .hero .hero-text {
   display: inline-block;
@@ -170,11 +169,10 @@ header .header-container .menu-container .menu a::after {
   background-color: #d9dfe3;
 }
 .hero .skills-scatter {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  z-index: 20;
+  margin-top: 80px;
+  position: relative;
   cursor: pointer;
+  height: 300px;
 }
 .hero .skills-scatter .skill {
   position: absolute;
@@ -183,7 +181,7 @@ header .header-container .menu-container .menu a::after {
   font-size: var(--size);
   opacity: 0;
   scale: 1;
-  animation: fadeIn 1.2s ease-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
   transition: opacity 0.3s ease-in-out;
 }
 .hero .skills-scatter .skill:nth-child(1) {
@@ -239,12 +237,6 @@ header .header-container .menu-container .menu a::after {
 }
 .hero .skills-scatter .skill:nth-child(18) {
   animation-delay: 1.44s;
-}
-.hero .skills-scatter .skill:nth-child(19) {
-  animation-delay: 1.52s;
-}
-.hero .skills-scatter .skill:nth-child(20) {
-  animation-delay: 1.6s;
 }
 @keyframes fadeIn {
   0% {

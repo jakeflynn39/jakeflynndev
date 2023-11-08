@@ -3,7 +3,6 @@
 .hero {
   padding: 60px 0;
   position: relative;
-  margin-bottom: 50px;
 
   .hero-text {
     // make the width only the width of the text
@@ -43,11 +42,11 @@
   }
 
   .skills-scatter {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 20;
+    margin-top: 80px;
+    position: relative;
     cursor: pointer;
+    $num-skills: 18;
+    height: 300px;
 
     .skill {
       position: absolute;
@@ -56,10 +55,10 @@
       font-size: var(--size);
       opacity: 0;
       scale: 1;
-      animation: fadeIn 1.2s ease-out forwards;
+      animation: fadeIn 0.8s ease-out forwards;
       transition: opacity 0.3s ease-in-out;
 
-      @for $i from 1 through 20 {
+      @for $i from 1 through $num-skills {
         &:nth-child(#{$i}) {
           animation-delay: #{$i * 0.08}s;
         }
