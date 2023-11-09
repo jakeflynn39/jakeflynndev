@@ -11,9 +11,9 @@ leptos_router = {version = "0.5.2", features = ["csr", "nightly"] }
 leptos_meta = { version = "0.5.2", features = ["csr", "nightly"] }
 gloo-console = "0.3.0"
 wasm-bindgen = "0.2.87"
-rand = "0.8.4"
 js-sys = "0.3.64"
 wasm-bindgen-futures = "0.4.38"
+rand = "0.8.5"
 
 [dependencies.web-sys]
 version = "0.3.64"

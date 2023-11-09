@@ -5,7 +5,7 @@ use crate::utils::{get_document, sleep};
 
 #[component]
 pub fn Hero() -> impl IntoView {
-    let skills: Vec<Skills> = vec![
+    let skills: [Skills; 18] = [
         Skills {
             name: "Javascript".to_string(),
             x: 800,
@@ -106,9 +106,9 @@ pub fn Hero() -> impl IntoView {
         },
         Skills {
             name: "HTML".to_string(),
-            x: 600,
+            x: 550,
             y: 40,
-            size: 20,
+            size: 30,
             opacity: 1.0,
         },
         Skills {
@@ -134,11 +134,11 @@ pub fn Hero() -> impl IntoView {
         },
     ];
 
-    let mut skills_sorted = skills.clone();
+    let mut skills_sorted: [Skills; 18] = skills.clone();
     skills_sorted.sort_by(|a, b| a.y.cmp(&b.y));
 
     let base_definition: String = "Full Stack Web Developer".to_string();
-    let base_length = base_definition.len();
+    let base_length: usize = base_definition.len();
     let base_definition_clone = base_definition.clone();
     let random_definition: String = rand::thread_rng()
         .sample_iter(&Alphanumeric)
@@ -165,8 +165,8 @@ pub fn Hero() -> impl IntoView {
     });
     
     async fn set_text_on_mount(final_text: &str) {
-        let document = get_document();
-        let skills_element = document
+        let document: web_sys::Document = get_document();
+        let skills_element: web_sys::Element = document
             .get_element_by_id("skills")
             .unwrap();
     

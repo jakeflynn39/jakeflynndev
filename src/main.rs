@@ -33,7 +33,7 @@ use components::projects::big_projects::BigProjects;
 use components::projects::small_projects::SmallProjects;
 use components::footer::footer::Footer;
 use routes::projects::Projects;
-use utils::{set_title, project_url_to_paramter};
+use utils::project_url_to_paramter;
 
 #[component]
 fn App() -> impl IntoView {

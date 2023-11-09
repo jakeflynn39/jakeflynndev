@@ -1,7 +1,7 @@
 use leptos::*;
 use leptos_router::*;
 use leptos_meta::*;
-use crate::{set_title, project_url_to_paramter, ProjectRoutes};
+use crate::{project_url_to_paramter, ProjectRoutes};
 
 #[component]
 pub fn projects() -> impl IntoView {
