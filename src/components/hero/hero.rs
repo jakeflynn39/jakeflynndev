@@ -92,8 +92,8 @@ pub fn Hero() -> impl IntoView {
         },
         Skills {
             name: "XGBoost".to_string(),
-            x: 680,
-            y: 170,
+            x: 650,
+            y: 180,
             size: 20,
             opacity: 0.5,
         },

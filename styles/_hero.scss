@@ -44,7 +44,7 @@
   .skills-scatter {
     margin-top: 80px;
     position: relative;
-    cursor: pointer;
+    // cursor: default;
     $num-skills: 18;
     height: 300px;
 
@@ -57,6 +57,11 @@
       scale: 1;
       animation: fadeIn 0.8s ease-out forwards;
       transition: opacity 0.3s ease-in-out;
+      // cursor: default;
+
+      // @media (max-width: 768px) {
+      //   font-size: calc(var(--size) * 0.1);
+      // }
 
       @for $i from 1 through $num-skills {
         &:nth-child(#{$i}) {
@@ -76,10 +81,9 @@
       }
 
       div {
-        // no wrapping
         white-space: nowrap;
         transition: transform 0.2s ease-in-out;
-        cursor: pointer;
+        cursor: default;
 
         &:hover {
           transform: scale(1.05);

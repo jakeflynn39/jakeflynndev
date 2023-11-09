@@ -10,6 +10,7 @@ pub fn SmallProjects() -> impl IntoView {
                 using characteristics about them I gave them every morning that uses the Twitter 
                 and OpenAI APIs, as well as running on AWS so I do not have to worry about posting
                 them every day."#.to_string(),
+            short_description: None,
             link: "/project/daily-tweets".to_string(),
             image: None,
         },
@@ -18,6 +19,7 @@ pub fn SmallProjects() -> impl IntoView {
             description: r#"Inspired by OddsJam, built a bot to go through different lines offered
                 by sportsbooks to calculate positive expected value bets. My first project in
                 Rust."#.to_string(),
+            short_description: None,
             link: "/project/ev-betting".to_string(),
             image: None,
         },
@@ -27,6 +29,7 @@ pub fn SmallProjects() -> impl IntoView {
                 song where artists both performed on. Used the restrictive Spotify API which does 
                 not let not users who are not given "developer access" by me play the game. If you 
                 would like to play, email me and I would be happy to give you access."#.to_string(),
+            short_description: None,
             link: "/project/perfect-pitch".to_string(),
             image: None,
         },
@@ -35,12 +38,14 @@ pub fn SmallProjects() -> impl IntoView {
             description: r#"Made a way for my friend Grif to look at and evaluate his previous
                 bets using closing line value to simulate his wins and losses, as well as predict
                 betting profitiblity in the future."#.to_string(),
+            short_description: None,
             link: "/project/griffy-sharps".to_string(),
             image: None,
         },
         ProjectInfo {
             name: "This Website".to_string(),
             description: r#"Created this website using WASM, by way of Leptos and Rust."#.to_string(),
+            short_description: None,
             link: "/project/this-website".to_string(),
             image: None,
         },

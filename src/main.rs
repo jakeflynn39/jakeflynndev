@@ -8,6 +8,9 @@ pub mod components {
     pub mod logo {
         pub mod jf_logo;
     }
+    pub mod icons {
+        pub mod paperclip;
+    }
     pub mod hero {
         pub mod hero;
     }
@@ -37,6 +40,8 @@ use utils::project_url_to_paramter;
 
 #[component]
 fn App() -> impl IntoView {
+    provide_meta_context();
+
     view! {
         <Router>
             <main>
@@ -83,6 +88,7 @@ fn main() {
 pub struct ProjectInfo {
     pub name: String,
     pub description: String,
+    pub short_description: Option<String>,
     pub link: String,
     pub image: Option<String>,
 }

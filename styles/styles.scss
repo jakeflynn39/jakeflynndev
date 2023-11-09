@@ -4,6 +4,14 @@
 @use "about";
 @use "variables" as *;
 
+:root {
+  --clip-size: 8px;
+
+  @media (max-width: $mobile) {
+    --clip-size: 8px;
+  }
+}
+
 * {
   color: #dbdbdb;
   font-family: "Raleway", sans-serif;
@@ -51,4 +59,40 @@ main {
 
 .footer {
   background-color: black;
+}
+
+.gg-link {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: rotate(-45deg) scale(var(--ggs, 1));
+  width: var(--clip-size);
+  height: calc(var(--clip-size) * 0.25);
+  background: currentColor;
+  border-radius: calc(var(--clip-size) * 0.5);
+
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: calc(var(--clip-size) * 0.375);
+    width: calc(var(--clip-size));
+    height: calc(var(--clip-size) * 1.25);
+    border: calc(var(--clip-size) * 0.25) solid;
+    top: calc(calc(var(--clip-size) * -0.5));
+  }
+  &::before {
+    border-right: 0;
+    border-top-left-radius: calc(var(--clip-size) * 5);
+    border-bottom-left-radius: calc(var(--clip-size) * 5);
+    left: calc(var(--clip-size) * -0.75);
+  }
+  &::after {
+    border-left: 0;
+    border-top-right-radius: calc(var(--clip-size) * 5);
+    border-bottom-right-radius: calc(var(--clip-size) * 5);
+    right: calc(var(--clip-size) * -0.75);
+  }
 }
