@@ -1,5 +1,6 @@
 use leptos::*;
 use leptos_router::*;
+use leptos_meta::*;
 pub mod components {
     pub mod header {
         pub mod header;
@@ -36,8 +37,6 @@ use utils::{set_title, project_url_to_paramter};
 
 #[component]
 fn App() -> impl IntoView {
-    set_title("JAke's World");
-
     view! {
         <Router>
             <main>
@@ -57,8 +56,9 @@ fn App() -> impl IntoView {
 
 #[component]
 fn Home() -> impl IntoView {
-    // set_title("JAke's World");
     view! {
+        <Title text="JAke's World"/>
+        <Meta name="description" content="Jake Flynn's personal website" />
         <Hero />
         <About />
         <BigProjects />

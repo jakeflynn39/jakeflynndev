@@ -1,5 +1,6 @@
 use leptos::*;
 use leptos_router::*;
+use leptos_meta::*;
 use crate::{set_title, project_url_to_paramter, ProjectRoutes};
 
 #[component]
@@ -33,9 +34,9 @@ pub fn projects() -> impl IntoView {
         title = "Error";
     }
 
-    // set_title(title);
-
     view! {
+        <Title text={title} />
+        <Meta name="description" content=format!("A page about {}", title) />
         <div>
             <h1>{ "Projects" }</h1>
             <h2>{ name }</h2>
