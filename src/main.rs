@@ -56,8 +56,8 @@ fn App() -> impl IntoView {
 }
 
 #[component]
-fn home() -> impl IntoView {
-    set_title("JAke's World");
+fn Home() -> impl IntoView {
+    // set_title("JAke's World");
     view! {
         <Hero />
         <About />
@@ -67,7 +67,7 @@ fn home() -> impl IntoView {
 }
 
 #[component]
-fn error() -> impl IntoView {
+fn Error() -> impl IntoView {
     view! {
         <div>
             <h2>{ "Page not found" }</h2>

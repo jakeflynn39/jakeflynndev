@@ -1,5 +1,5 @@
 use leptos::*;
-use crate::components::logo::jf_logo::JfLogo;
+use crate::components::logo::jf_logo::JFLogo;
 
 #[component]
 pub fn header() -> impl IntoView {
@@ -9,7 +9,7 @@ pub fn header() -> impl IntoView {
                 <div class="filler" />
                 <div class="logo-container">
                     <a href="/" class="logo">
-                        <JfLogo />
+                        <JFLogo />
                     </a>
                 </div>
                 <div class="menu-container">

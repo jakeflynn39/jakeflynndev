@@ -4,7 +4,7 @@ use web_sys::MouseEvent;
 use crate::utils::{get_document, sleep};
 
 #[component]
-pub fn hero() -> impl IntoView {
+pub fn Hero() -> impl IntoView {
     let skills: Vec<Skills> = vec![
         Skills {
             name: "Javascript".to_string(),

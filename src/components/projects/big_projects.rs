@@ -2,7 +2,7 @@ use leptos::*;
 use crate::ProjectInfo;
 
 #[component]
-pub fn big_projects() -> impl IntoView {
+pub fn BigProjects() -> impl IntoView {
     let big_projects: [ProjectInfo; 4] = [
         ProjectInfo{
             name: "Hoops Forecast".to_string(),

@@ -2,7 +2,7 @@ use leptos::*;
 use crate::ProjectInfo;
 
 #[component]
-pub fn small_projects() -> impl IntoView {
+pub fn SmallProjects() -> impl IntoView {
     let small_projects: [ProjectInfo; 5] = [
         ProjectInfo {
             name: "Daily Tweets".to_string(),

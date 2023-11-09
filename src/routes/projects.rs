@@ -33,7 +33,7 @@ pub fn projects() -> impl IntoView {
         title = "Error";
     }
 
-    set_title(title);
+    // set_title(title);
 
     view! {
         <div>
