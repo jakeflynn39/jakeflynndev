@@ -6,80 +6,78 @@ pub fn SmallProjects() -> impl IntoView {
     let small_projects: [ProjectInfo; 5] = [
         ProjectInfo {
             name: "Daily Tweets".to_string(),
-            description: r#"Created a bot that tweets at my friends that uses characteristics about them
-                using characteristics about them I gave them every morning that uses the Twitter 
-                and OpenAI APIs, as well as running on AWS so I do not have to worry about posting
-                them every day."#.to_string(),
+            description: r#"Created a bot that tweets at my friends using characteristics about them 
+                every morning. Uses the Twitter and OpenAI APIs, and runs on AWS with a cron job 
+                so it is completely automated."#.to_string(),
             short_description: None,
-            link: "/project/daily-tweets".to_string(),
-            new_tab: false,
+            link: "https://github.com/jakeflynn39/".to_string(),
+            new_tab: true,
             image: None,
         },
         ProjectInfo {
             name: "EV Betting".to_string(),
-            description: r#"Inspired by OddsJam, built a bot to go through different lines offered
-                by sportsbooks to calculate positive expected value bets. My first project in
+            description: r#"Inspired by OddsJam, built a tool to go parse thousands of different lines 
+                offered by sportsbooks to calculate positive expected value bets. My first project in
                 Rust."#.to_string(),
             short_description: None,
-            link: "/project/ev-betting".to_string(),
-            new_tab: false,
+            link: "https://github.com/jakeflynn39/".to_string(),
+            new_tab: true,
             image: None,
         },
         ProjectInfo {
             name: "Perfect Pitch".to_string(),
-            description: r#"Inspired by Sports Reference's Immaculate Grid, created a game to guess
-                song where artists both performed on. Used the restrictive Spotify API which does 
-                not let not users who are not given "developer access" by me play the game. If you 
-                would like to play, email me and I would be happy to give you access."#.to_string(),
+            description: r#"Immaculate Grid style game. Built on SvelteKit. Player guess song where intersecting 
+                artists both performed on. Uses the restrictive Spotify API which does not let not users who are 
+                not given explicit "developer access" by me. If you would like to try it, email me and I 
+                would be happy to give you access."#.to_string(),
             short_description: None,
-            link: "/project/perfect-pitch".to_string(),
-            new_tab: false,
+            link: "https://github.com/jakeflynn39/".to_string(),
+            new_tab: true,
             image: None,
         },
         ProjectInfo {
             name: "Griffy Sharps".to_string(),
             description: r#"Made a way for my friend Grif to look at and evaluate his previous
                 bets using closing line value to simulate his wins and losses, as well as predict
-                betting profitiblity in the future."#.to_string(),
+                betting profitiblity in the future. Uses Python, Pandas, Numpy, and Matplotlib"#.to_string(),
             short_description: None,
-            link: "/project/griffy-sharps".to_string(),
-            new_tab: false,
+            link: "https://github.com/jakeflynn39/".to_string(),
+            new_tab: true,
             image: None,
         },
         ProjectInfo {
-            name: "This Website".to_string(),
-            description: r#"Created this website using WASM, by way of Leptos and Rust."#.to_string(),
+            name: "This Website!".to_string(),
+            description: r#"Created this website using WASM, by way of Leptos and Rust. Definitely an overkill
+                using Rust to make a simple website, but I had fun doing it and learning how to use a new 
+                framework"#.to_string(),
             short_description: None,
-            link: "/project/this-website".to_string(),
-            new_tab: false,
+            link: "https://github.com/jakeflynn39/".to_string(),
+            new_tab: true,
             image: None,
         },
     ];
 
     view! {
         <div class="small-projects">
-        { 
-            small_projects.iter().map(|project| {
-                view! {
-                    <div class="small-project">
-                        <h2>{ &project.name }</h2>
-                        <p>{ &project.description }</p>
-                        <a href={project.link.clone()}>{ "click here to go to project" }</a>
-                        { if let Some(image) = &project.image {
-                            view! {
-                                <>
-                                    <div class="card-image">
-                                        <img src={image.to_string()} />
-                                    </div>
-                                </>
-                            }.into_view()
-                        } else {
-                            view! {}.into_view()
-                        }}
-                    </div>
-                }
-            }).collect_view()
-        }
+            <div class="small-projects-container">
+            { 
+                small_projects.iter().map(|project| {
+                    view! {
+                        <div class="small-project">
+                            <div class="full small">
+                                <div class="title">
+                                    <h2>{ &project.name }</h2>
+                                </div>
+                                <a href={&project.link} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
+                                    <i class="gg-link" />
+                                </a>
+                            </div>
+                            <p>{ &project.description }</p>
+                        </div>
+                    }
+                }).collect_view()
+            }
+            </div>
         </div>
     }
 }

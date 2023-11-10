@@ -61,21 +61,19 @@ pub fn BigProjects() -> impl IntoView {
                             <div class="card-header">
                                 <div class="full">
                                     <div class="title">
-                                        <h2>{ project.name }</h2>
+                                        <h2>{ &project.name }</h2>
                                     </div>
-                                    <a href={project.link.clone()} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
+                                    <a href={&project.link} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
                                         <i class="gg-link" />
                                     </a>
                                 </div>
                                 <div class="short">
-                                    { project.short_description.unwrap_or("bsdib".to_string())}
+                                    { &project.short_description.unwrap_or("".to_string())}
                                 </div>
                             </div>
-                            <div 
-                                class="card-body" 
-                            >
-                                <div class="card-image" style=format!("background-image: url({});", {project.image.clone().unwrap_or("".to_string())}) />
-                                <p>{ project.description }</p>
+                            <div class="card-body">
+                                <div class="card-image" style=format!("background-image: url({});", {&project.image.clone().unwrap_or("".to_string())}) />
+                                <p>{ &project.description }</p>
                             </div>
                         </div>
                     }).collect_view()

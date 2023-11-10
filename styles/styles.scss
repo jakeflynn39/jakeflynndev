@@ -6,7 +6,7 @@
 @use "variables" as *;
 
 :root {
-  --clip-size: 8px;
+  // --clip-size: 8px;
 
   @media (max-width: $mobile) {
     --clip-size: 8px;
