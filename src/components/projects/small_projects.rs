@@ -10,7 +10,7 @@ pub fn SmallProjects() -> impl IntoView {
                 every morning. Uses the Twitter and OpenAI APIs, and runs on AWS with a cron job 
                 so it is completely automated."#.to_string(),
             short_description: None,
-            link: "https://github.com/jakeflynn39/".to_string(),
+            link: "https://github.com/jakeflynn39/daily-messages/".to_string(),
             new_tab: true,
             image: None,
         },
@@ -20,7 +20,7 @@ pub fn SmallProjects() -> impl IntoView {
                 offered by sportsbooks to calculate positive expected value bets. My first project in
                 Rust."#.to_string(),
             short_description: None,
-            link: "https://github.com/jakeflynn39/".to_string(),
+            link: "https://github.com/jakeflynn39/oddsjam-api-plus-ev-calculator".to_string(),
             new_tab: true,
             image: None,
         },
@@ -31,7 +31,7 @@ pub fn SmallProjects() -> impl IntoView {
                 not given explicit "developer access" by me. If you would like to try it, email me and I 
                 would be happy to give you access."#.to_string(),
             short_description: None,
-            link: "https://github.com/jakeflynn39/".to_string(),
+            link: "https://github.com/jakeflynn39/perfect-pitch".to_string(),
             new_tab: true,
             image: None,
         },
@@ -41,7 +41,7 @@ pub fn SmallProjects() -> impl IntoView {
                 bets using closing line value to simulate his wins and losses, as well as predict
                 betting profitiblity in the future. Uses Python, Pandas, Numpy, and Matplotlib"#.to_string(),
             short_description: None,
-            link: "https://github.com/jakeflynn39/".to_string(),
+            link: "https://github.com/jakeflynn39/griffy-sharps".to_string(),
             new_tab: true,
             image: None,
         },
@@ -51,7 +51,7 @@ pub fn SmallProjects() -> impl IntoView {
                 using Rust to make a simple website, but I had fun doing it and learning how to use a new 
                 framework"#.to_string(),
             short_description: None,
-            link: "https://github.com/jakeflynn39/".to_string(),
+            link: "https://github.com/jakeflynn39/jakeflynndev".to_string(),
             new_tab: true,
             image: None,
         },
