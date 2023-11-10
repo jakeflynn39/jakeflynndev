@@ -1,4 +1,6 @@
 use leptos::*;
+use web_sys::{MouseEvent, HtmlElement};
+use wasm_bindgen::JsCast;
 use crate::ProjectInfo;
 
 #[component]
@@ -7,7 +9,7 @@ pub fn SmallProjects() -> impl IntoView {
         ProjectInfo {
             name: "Daily Tweets".to_string(),
             description: r#"Created a bot that tweets at my friends using characteristics about them 
-                every morning. Uses the Twitter and OpenAI APIs, and runs on AWS with a cron job 
+                every morning. Uses the Twitter and OpenAI APIs and runs on AWS with a cron job 
                 so it is completely automated."#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/daily-messages/".to_string(),
@@ -16,9 +18,8 @@ pub fn SmallProjects() -> impl IntoView {
         },
         ProjectInfo {
             name: "EV Betting".to_string(),
-            description: r#"Inspired by OddsJam, built a tool to go parse thousands of different lines 
-                offered by sportsbooks to calculate positive expected value bets. My first project in
-                Rust."#.to_string(),
+            description: r#"Inspired by OddsJam, built a tool to parse tens of thousands of different lines 
+                offered by sportsbooks to calculate positive expected value bets in just a few seconds."#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/oddsjam-api-plus-ev-calculator".to_string(),
             new_tab: true,
@@ -26,9 +27,9 @@ pub fn SmallProjects() -> impl IntoView {
         },
         ProjectInfo {
             name: "Perfect Pitch".to_string(),
-            description: r#"Immaculate Grid style game. Built on SvelteKit. Player guess song where intersecting 
-                artists both performed on. Uses the restrictive Spotify API which does not let not users who are 
-                not given explicit "developer access" by me. If you would like to try it, email me and I 
+            description: r#"Immaculate Grid-style game. Built on SvelteKit. User guesses the song where intersecting 
+                artists both performed. Uses the restrictive Spotify API, which does not allow users who are 
+                not given explicit "developer access" by me. If you would like to try it, email me, and I 
                 would be happy to give you access."#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/perfect-pitch".to_string(),
@@ -39,7 +40,7 @@ pub fn SmallProjects() -> impl IntoView {
             name: "Griffy Sharps".to_string(),
             description: r#"Made a way for my friend Grif to look at and evaluate his previous
                 bets using closing line value to simulate his wins and losses, as well as predict
-                betting profitiblity in the future. Uses Python, Pandas, Numpy, and Matplotlib"#.to_string(),
+                betting profitability in the future. Uses Python, Pandas, NumPy, and Matplotlib"#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/griffy-sharps".to_string(),
             new_tab: true,
@@ -55,7 +56,34 @@ pub fn SmallProjects() -> impl IntoView {
             new_tab: true,
             image: None,
         },
+        
     ];
+
+    let onclick: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
+        let binding: web_sys::EventTarget = e.target().expect("should have a target");
+        let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
+
+        if let Some(target) = target {
+            let small_project: Result<Option<web_sys::Element>, wasm_bindgen::JsValue> = target.closest(".small-project");
+
+            if let Ok(Some(small_project)) = small_project {
+                small_project.class_list().add_1("clicked").unwrap();
+            }
+        }
+    });
+
+    let onmouseleave: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
+        let binding: web_sys::EventTarget = e.target().expect("should have a target");
+        let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
+
+        if let Some(target) = target {
+            let small_project: Result<Option<web_sys::Element>, wasm_bindgen::JsValue> = target.closest(".small-project");
+
+            if let Ok(Some(small_project)) = small_project {
+                small_project.class_list().remove_1("clicked").unwrap();
+            }
+        }
+    });
 
     view! {
         <div class="small-projects">
@@ -63,7 +91,7 @@ pub fn SmallProjects() -> impl IntoView {
             { 
                 small_projects.iter().map(|project| {
                     view! {
-                        <div class="small-project">
+                        <div class="small-project" on:click=onclick on:mouseleave=onmouseleave>
                             <div class="full small">
                                 <div class="title">
                                     <h2>{ &project.name }</h2>

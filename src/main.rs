@@ -62,7 +62,7 @@ fn App() -> impl IntoView {
 #[component]
 fn Home() -> impl IntoView {
     view! {
-        <Title text="Jake Flynn | Software Developer"/>
+        <Title text="Jake Flynn, Software Developer"/>
         <Meta name="description" content="Jake Flynn's personal website" />
         <Hero />
         <About />

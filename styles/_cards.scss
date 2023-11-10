@@ -152,13 +152,16 @@
         }
       }
 
-      &:hover {
+      &.clicked {
         transform: translateY($transition-distance);
-        background-color: #3b3b3b;
       }
 
       &:first-child {
         transform: none;
+      }
+
+      &:hover:not(.clicked) {
+        transform: translateY(-20px);
       }
 
       .full {
