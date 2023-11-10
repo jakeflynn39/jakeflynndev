@@ -62,7 +62,7 @@ fn App() -> impl IntoView {
 #[component]
 fn Home() -> impl IntoView {
     view! {
-        <Title text="JAke's World"/>
+        <Title text="Jake Flynn | Software Developer"/>
         <Meta name="description" content="Jake Flynn's personal website" />
         <Hero />
         <About />
@@ -90,6 +90,7 @@ pub struct ProjectInfo {
     pub description: String,
     pub short_description: Option<String>,
     pub link: String,
+    pub new_tab: bool,
     pub image: Option<String>,
 }
 

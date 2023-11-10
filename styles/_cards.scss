@@ -18,8 +18,7 @@
       border-radius: $border-radius;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       transition: all 0.2s ease-in-out;
-      height: 550px;
-      --hsl: 165, 82.86%, 51.37%;
+      height: 400px;
 
       .card-header {
         display: flex;
@@ -29,6 +28,7 @@
         background-color: #313131;
         border-radius: $border-radius $border-radius 0 0;
         border-bottom: 1px solid #eceff133;
+        transition: all 0.2s ease-in-out;
 
         .full {
           display: flex;
@@ -38,7 +38,7 @@
 
           .title {
             h2 {
-              font-size: 1.4em;
+              font-size: 1.35em;
               font-weight: 500;
             }
           }
@@ -51,6 +51,7 @@
             a {
               visibility: hidden;
               opacity: 0;
+              font-size: 0.85rem;
               text-decoration: none;
               text-decoration: underline;
               transition: all 0.2s ease-in-out;
@@ -63,11 +64,13 @@
             }
 
             &:hover {
+              color: white;
+              opacity: 1;
+
               .icon {
                 opacity: 0.9;
               }
-              color: white;
-              opacity: 1;
+
               a {
                 visibility: visible;
                 opacity: 1;
@@ -79,15 +82,68 @@
         .short {
           font-size: 0.8rem;
         }
+
+        &:hover {
+          background-color: #353535;
+        }
       }
 
       .card-body {
+        position: relative;
         border-radius: 0 0 $border-radius $border-radius;
         height: 100%;
+        overflow: hidden;
+
+        &:hover {
+          .card-image {
+            transform: scale(1.05);
+            filter: blur(0);
+          }
+        }
+
+        .card-image {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          max-height: 100%;
+          max-width: 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 0 0 $border-radius $border-radius;
+          z-index: 1;
+          filter: blur(2px);
+          transition: all 0.2s ease-in;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 0 0 $border-radius $border-radius;
+          background: linear-gradient(
+            170deg,
+            rgba(12, 12, 12, 0.862) 0%,
+            rgba(12, 12, 12, 0.897) 50%,
+            rgba(12, 12, 12, 0.609) 100%
+          );
+          opacity: 1;
+          z-index: 2;
+        }
 
         p {
+          position: relative;
+          margin: 0;
+          padding: 20px;
           font-size: 1em;
-          font-weight: 300;
+          font-weight: 400;
+          line-height: 1.75em;
+          letter-spacing: -0.4px;
+          text-shadow: 0 0 10px rgb(0, 0, 0);
+          z-index: 3;
         }
       }
 

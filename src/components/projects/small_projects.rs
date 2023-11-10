@@ -12,6 +12,7 @@ pub fn SmallProjects() -> impl IntoView {
                 them every day."#.to_string(),
             short_description: None,
             link: "/project/daily-tweets".to_string(),
+            new_tab: false,
             image: None,
         },
         ProjectInfo {
@@ -21,6 +22,7 @@ pub fn SmallProjects() -> impl IntoView {
                 Rust."#.to_string(),
             short_description: None,
             link: "/project/ev-betting".to_string(),
+            new_tab: false,
             image: None,
         },
         ProjectInfo {
@@ -31,6 +33,7 @@ pub fn SmallProjects() -> impl IntoView {
                 would like to play, email me and I would be happy to give you access."#.to_string(),
             short_description: None,
             link: "/project/perfect-pitch".to_string(),
+            new_tab: false,
             image: None,
         },
         ProjectInfo {
@@ -40,6 +43,7 @@ pub fn SmallProjects() -> impl IntoView {
                 betting profitiblity in the future."#.to_string(),
             short_description: None,
             link: "/project/griffy-sharps".to_string(),
+            new_tab: false,
             image: None,
         },
         ProjectInfo {
@@ -47,6 +51,7 @@ pub fn SmallProjects() -> impl IntoView {
             description: r#"Created this website using WASM, by way of Leptos and Rust."#.to_string(),
             short_description: None,
             link: "/project/this-website".to_string(),
+            new_tab: false,
             image: None,
         },
     ];
