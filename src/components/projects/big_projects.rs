@@ -63,13 +63,9 @@ pub fn BigProjects() -> impl IntoView {
                                     <div class="title">
                                         <h2>{ project.name }</h2>
                                     </div>
-                                    <div class="link">
-                                        <div class="icon">
-                                            <i class="gg-link" />
-                                        </div>
-                                        <a href={project.link.clone()} target={if project.new_tab { "_blank" } else { "_self" }}
-                                            >{ "Check it out!" }</a>
-                                    </div>
+                                    <a href={project.link.clone()} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
+                                        <i class="gg-link" />
+                                    </a>
                                 </div>
                                 <div class="short">
                                     { project.short_description.unwrap_or("bsdib".to_string())}

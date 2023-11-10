@@ -5,22 +5,13 @@
   position: relative;
 
   .hero-text {
-    // make the width only the width of the text
     display: inline-block;
+
     h1 {
       margin: 10px 0;
       font-size: 108px;
       font-weight: 700;
       color: #d9dfe3;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 48px;
-      font-weight: 400;
-      color: #b7b7b7;
-      //   give a monospace font
-      font-family: "Roboto Mono", monospace;
     }
 
     h3 {
@@ -44,7 +35,6 @@
   .skills-scatter {
     margin-top: 80px;
     position: relative;
-    // cursor: default;
     $num-skills: 18;
     height: 300px;
 
@@ -57,7 +47,6 @@
       scale: 1;
       animation: fadeIn 0.8s ease-out forwards;
       transition: opacity 0.3s ease-in-out;
-      // cursor: default;
 
       // @media (max-width: 768px) {
       //   font-size: calc(var(--size) * 0.1);
