@@ -96,7 +96,7 @@
 
         &:hover {
           .card-image {
-            transform: scale(1.05);
+            transform: scale(1.03);
             filter: blur(0);
           }
         }
@@ -126,7 +126,7 @@
           border-radius: 0 0 $border-radius $border-radius;
           background: linear-gradient(
             170deg,
-            rgba(12, 12, 12, 0.862) 0%,
+            rgba(12, 12, 12, 0.896) 0%,
             rgba(12, 12, 12, 0.897) 50%,
             rgba(12, 12, 12, 0.609) 100%
           );
