@@ -114,13 +114,13 @@ pub fn SmallProjects() -> impl IntoView {
                 </div>
                 <div class="clicker">
                     <div class="icon">
-                        <a href="https://github.com/jakeflynn39" target="_blank">
+                        <a href="https://github.com/jakeflynn39" class="gh" target="_blank">
                             <img src="/static/images/github-mark-white.svg" alt="Github icon" />
                         </a>
                     </div>
-                    <button>
-                        { "My Resume" }
-                    </button>
+                    <a href="/static/JAKE FLYNN WORK SWE RESUME.pdf" class="resume" download="Jake Flynn Resume">
+                        { "Resume" }
+                    </a>
                 </div>
             </div>
         </section>

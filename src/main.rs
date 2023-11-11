@@ -67,6 +67,7 @@ fn Home() -> impl IntoView {
         <About />
         <BigProjects />
         <SmallProjects />
+        <Footer />
     }
 }
 

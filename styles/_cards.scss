@@ -225,10 +225,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
+      gap: 25px;
 
       .icon {
         $icon-size: 40px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
 
         img {
           width: $icon-size;
@@ -237,11 +240,12 @@
         }
       }
 
-      button {
+      .resume {
         font-weight: 400;
         padding: 10px 20px;
         border-radius: 35px;
         outline: none;
+        text-decoration: none;
         border: 1px solid rgb(212, 212, 212);
         background-color: rgb(253, 253, 253);
         color: rgb(24, 24, 24);
@@ -252,7 +256,6 @@
         transition: all 150ms ease-in;
 
         &:hover {
-          // invert colors
           background-color: rgb(24, 24, 24);
           color: rgb(253, 253, 253);
         }
