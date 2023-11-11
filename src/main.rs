@@ -53,7 +53,6 @@ fn App() -> impl IntoView {
                         <Route path="/*any" view=Error/>
                     </Routes>
                 </div>
-                <Footer />
             </main>
         </Router>
     }

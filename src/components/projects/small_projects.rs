@@ -86,7 +86,7 @@ pub fn SmallProjects() -> impl IntoView {
     });
 
     view! {
-        <div class="small-projects">
+        <section class="small-contact" id="contact">
             <div class="small-projects-container">
             { 
                 small_projects.iter().map(|project| {
@@ -106,6 +106,23 @@ pub fn SmallProjects() -> impl IntoView {
                 }).collect_view()
             }
             </div>
-        </div>
+            <div class="contact">
+                <h1>{ "Contact Me!" }</h1>
+                <h2>{ "Open to new opportunites" }</h2>
+                <div class="image">
+                    <img src="/static/images/jake.png" alt="portrait of JAke Flynn"/>
+                </div>
+                <div class="clicker">
+                    <div class="icon">
+                        <a href="https://github.com/jakeflynn39" target="_blank">
+                            <img src="/static/images/github-mark-white.svg" alt="Github icon" />
+                        </a>
+                    </div>
+                    <button>
+                        { "My Resume" }
+                    </button>
+                </div>
+            </div>
+        </section>
     }
 }

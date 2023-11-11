@@ -6,11 +6,11 @@ pub fn About() -> impl IntoView {
         Sports analytics enthusiast. Hiker. Skateboarder. Gym-goer. Extremely amateur golfer. Boilermaker."#;
 
     view! {
-        <div class="about-me">
+        <section class="about-me" id="about">
             <div class="about-section">
                 <p>{ about_me }</p>
             </div>
-        </div>
+        </section>
     }
 
 }

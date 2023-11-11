@@ -49,12 +49,8 @@ pub fn BigProjects() -> impl IntoView {
     ];
 
     view! {
-        <div 
-            class="big-projects-cards"
-        >
-            <
-                div class="big-projects-cards-inner"
-            >
+        <section class="big-projects-cards" id="projects">
+            <div class="big-projects-cards-inner">
                 {big_projects.into_iter()
                     .map(|project| view! {
                         <div class="big-projects-card">
@@ -80,6 +76,6 @@ pub fn BigProjects() -> impl IntoView {
                     
                 }
             </div>
-        </div>
+        </section>
     }
 }
