@@ -107,7 +107,7 @@ pub fn SmallProjects() -> impl IntoView {
             }
             </div>
             <div class="contact">
-                <h1>{ "Contact Me!" }</h1>
+                <h1>{ "Let's Connect!" }</h1>
                 <h2>{ "Open to new opportunites" }</h2>
                 <div class="image">
                     <img src="/static/images/jake.png" alt="portrait of JAke Flynn"/>

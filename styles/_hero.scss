@@ -81,3 +81,27 @@
     }
   }
 }
+
+body.light {
+  .hero-text {
+    h1 {
+      color: #1f1f1f;
+    }
+
+    h3 {
+      color: #1f1f1f;
+    }
+
+    &::before {
+      background-color: #1f1f1f;
+    }
+  }
+
+  .skills-scatter {
+    .skill {
+      div {
+        color: #1f1f1f;
+      }
+    }
+  }
+}

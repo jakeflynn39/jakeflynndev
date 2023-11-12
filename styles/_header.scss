@@ -64,3 +64,21 @@ header {
     }
   }
 }
+
+body.light {
+  header {
+    .header-container {
+      .menu-container {
+        .menu {
+          a {
+            color: #1f1f1f;
+
+            &::after {
+              background: #1f1f1f;
+            }
+          }
+        }
+      }
+    }
+  }
+}
