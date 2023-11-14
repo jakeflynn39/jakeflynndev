@@ -46,13 +46,14 @@ fn App() -> impl IntoView {
         <Router>
             <main>
                 <div class="page-container">
-                    <Header />
+                    // <Header />
                     <Routes>
                         <Route path="/" view=Home/>
                         <Route path="/project/:name" view=Projects/>
                         <Route path="/*any" view=Error/>
                     </Routes>
                 </div>
+                <Footer />
             </main>
         </Router>
     }
@@ -63,11 +64,10 @@ fn Home() -> impl IntoView {
     view! {
         <Title text="Jake Flynn, Software Developer"/>
         <Meta name="description" content="Jake Flynn's personal website" />
-        <Hero />
-        <About />
-        <BigProjects />
+        // <Hero />
+        // <About />
+        // <BigProjects />
         <SmallProjects />
-        <Footer />
     }
 }
 
