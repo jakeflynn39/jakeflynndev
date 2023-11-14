@@ -1,7 +1,7 @@
 use leptos::*;
-use web_sys::{MouseEvent, HtmlElement};
+use web_sys::{MouseEvent, TouchEvent, HtmlElement};
 use wasm_bindgen::JsCast;
-use crate::ProjectInfo;
+use crate::{ProjectInfo, utils::get_document};
 
 #[component]
 pub fn SmallProjects() -> impl IntoView {
@@ -59,9 +59,32 @@ pub fn SmallProjects() -> impl IntoView {
         
     ];
 
-    let onclick: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
+    let target = create_node_ref::<html::Div>();
+
+    let onmousedown: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
         let binding: web_sys::EventTarget = e.target().expect("should have a target");
         let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
+
+        if let Some(target) = target {
+            let small_project: Result<Option<web_sys::Element>, wasm_bindgen::JsValue> = target.closest(".small-project");
+
+            if let Ok(Some(small_project)) = small_project {
+                small_project.class_list().add_1("clicked").unwrap();
+            }
+        }
+    });
+
+    let ontouchstart: Callback<TouchEvent> = Callback::from(move|e: TouchEvent| {
+        let binding: web_sys::EventTarget = e.target().expect("should have a target");
+        let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
+
+        let document = get_document();
+        let small_projects = document.get_elements_by_class_name("small-project");
+
+        for i in 0..small_projects.length() {
+            let small_project = small_projects.item(i).unwrap();
+            small_project.class_list().remove_1("clicked").unwrap();
+        }
 
         if let Some(target) = target {
             let small_project: Result<Option<web_sys::Element>, wasm_bindgen::JsValue> = target.closest(".small-project");
@@ -87,11 +110,11 @@ pub fn SmallProjects() -> impl IntoView {
 
     view! {
         <section class="small-contact" id="contact">
-            <div class="small-projects-container">
+            <div class="small-projects-container" node_ref=target>
             { 
                 small_projects.iter().map(|project| {
                     view! {
-                        <div class="small-project" on:click=onclick on:mouseleave=onmouseleave>
+                        <div class="small-project" on:mousedown=onmousedown on:touchstart=ontouchstart on:mouseleave=onmouseleave>
                             <div class="full small">
                                 <div class="title">
                                     <h2>{ &project.name }</h2>
