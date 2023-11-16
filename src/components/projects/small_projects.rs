@@ -15,6 +15,7 @@ pub fn SmallProjects() -> impl IntoView {
             link: "https://github.com/jakeflynn39/daily-messages/".to_string(),
             new_tab: true,
             image: None,
+            color: None,
         },
         ProjectInfo {
             name: "EV Betting".to_string(),
@@ -24,6 +25,7 @@ pub fn SmallProjects() -> impl IntoView {
             link: "https://github.com/jakeflynn39/oddsjam-api-plus-ev-calculator".to_string(),
             new_tab: true,
             image: None,
+            color: None,
         },
         ProjectInfo {
             name: "Perfect Pitch".to_string(),
@@ -35,6 +37,7 @@ pub fn SmallProjects() -> impl IntoView {
             link: "https://github.com/jakeflynn39/perfect-pitch".to_string(),
             new_tab: true,
             image: None,
+            color: None,
         },
         ProjectInfo {
             name: "Griffy Sharps".to_string(),
@@ -45,6 +48,7 @@ pub fn SmallProjects() -> impl IntoView {
             link: "https://github.com/jakeflynn39/griffy-sharps".to_string(),
             new_tab: true,
             image: None,
+            color: None,
         },
         ProjectInfo {
             name: "This Website!".to_string(),
@@ -55,6 +59,7 @@ pub fn SmallProjects() -> impl IntoView {
             link: "https://github.com/jakeflynn39/jakeflynndev".to_string(),
             new_tab: true,
             image: None,
+            color: None,
         },
         
     ];

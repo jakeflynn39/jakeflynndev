@@ -1,5 +1,7 @@
 use leptos::*;
-use crate::ProjectInfo;
+use leptos_use::*;
+use web_sys::PointerEvent;
+use crate::{ProjectInfo, Color};
 
 
 #[component]
@@ -14,6 +16,7 @@ pub fn BigProjects() -> impl IntoView {
             link: "https://hoopsforecast.com".to_string(),
             new_tab: true,
             image: Some("https://us.canvasartrocks.com/cdn/shop/products/Basketball_court_Wall_Mural_Wallpaper_a_1400x.jpg?v=1571715105".to_string()),
+            color: Some(Color {hue: 165.0, saturation: 82.86, lightness: 51.37}),
         },
         ProjectInfo {
             name: "Shot Quality".to_string(),
@@ -24,6 +27,7 @@ pub fn BigProjects() -> impl IntoView {
             link: "https://shotqualitybets.com/".to_string(),
             new_tab: true,
             image: Some("https://www.sportsbusinessjournal.com/-/media/Images/Daily/2023/03/17/SBJ-Tech/shot-quality.ashx".to_string()),
+            color: Some(Color {hue: 291.34, saturation: 95.9, lightness: 61.76}),
         },
         ProjectInfo {
             name: "Heat Transfer Research".to_string(),
@@ -34,6 +38,7 @@ pub fn BigProjects() -> impl IntoView {
             link: "https://www.purdue.edu/newsroom/releases/2023/Q1/purdues-worlds-whitest-paint-wins-2023-sxsw-innovation-award.html".to_string(),
             new_tab: true,
             image: Some("https://www.purdue.edu/uns/images/2021/ruan-xiulin-portraitLO.jpg".to_string()),
+            color: Some(Color {hue: 338.69, saturation: 100.0, lightness: 48.04}),
         },
         ProjectInfo {
             name: "Concussion Detection".to_string(),
@@ -45,36 +50,116 @@ pub fn BigProjects() -> impl IntoView {
             link: "/project/concussion-detection".to_string(),
             new_tab: false,
             image: Some("https://mattlaw.com/wp-content/uploads/2016/10/traumatic-brain-injury-symptoms.jpg".to_string()),
+            color: Some(Color {hue: 97.5, saturation: 83.71, lightness: 69.0}),
         },
     ];
 
+    let big_projects_clone = big_projects.clone();
+
+    let window = use_window();
+    let document = use_document();
+
+    let cards_container = create_node_ref::<html::Div>();
+    let overlay = create_node_ref::<html::Div>();
+
+    let set_overlay = move |e: PointerEvent, leaving: bool| {
+        let cards = cards_container
+            .get()
+            .expect("input_ref should be loaded by now");
+
+        let scroll_height = window
+            .as_ref()
+            .expect("problem getting window")
+            .scroll_y()
+            .expect("problem getting scroll height");
+
+        let scroll_width = window
+            .as_ref()
+            .expect("problem getting window")
+            .scroll_x()
+            .expect("problem getting scroll width");
+
+        let x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
+        let y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
+
+        let opacity = if leaving { 0 } else { 1 };
+
+        overlay
+            .get()
+            .expect("input_ref should be loaded by now")
+            .set_attribute("style", &format!("--x: {}px; --y: {}px; --opacity: {}", x, y, opacity))
+            .expect("problem");
+    };
+
+    let set_overlay_clone = set_overlay.clone();
+
+    let apply_overlay_mask = move |e: PointerEvent| {
+        set_overlay(e, false);
+    };
+
+    let remove_overlay = move |e: PointerEvent| {
+        set_overlay_clone(e, true);
+    };
+
+    create_effect(move |_| {
+        for project in &big_projects_clone {
+            let overlay_card = document
+                .as_ref()
+                .expect("problem getting document")
+                .create_element("div")
+                .expect("problem creating the div");
+
+            let color = project.color.as_ref().unwrap();
+
+            overlay_card.set_class_name("card");
+
+            overlay_card.set_attribute("style", &format!(
+                "--hue: {}; --saturation: {}%; --lightness: {}%;",
+                color.hue, color.saturation, color.lightness
+            )).expect("problem setting attribute");
+
+            overlay
+                .get()
+                .expect("problem getting overlay")
+                .append_child(&overlay_card)
+                .expect("problem adding child to card");
+        }
+    });
+
     view! {
-        <section class="big-projects-cards" id="projects">
-            <div class="big-projects-cards-inner">
-                {big_projects.into_iter()
-                    .map(|project| view! {
-                        <div class="big-projects-card">
-                            <div class="card-header">
-                                <div class="full">
-                                    <div class="title">
-                                        <h2>{ &project.name }</h2>
+        <section class="big-projects-cards" id="projects" on:pointermove=apply_overlay_mask on:pointerout=remove_overlay>
+            <div class="cards">
+                <div class="cards-inner" node_ref=cards_container>
+                    {big_projects.into_iter()
+                        .map(|project| view! {
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="full">
+                                        <div class="title">
+                                            <h2>{ &project.name }</h2>
+                                        </div>
+                                        <a href={&project.link} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
+                                            <i class="gg-link" />
+                                        </a>
                                     </div>
-                                    <a href={&project.link} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
-                                        <i class="gg-link" />
-                                    </a>
+                                    <div class="short">
+                                        { &project.short_description.unwrap_or("".to_string())}
+                                    </div>
                                 </div>
-                                <div class="short">
-                                    { &project.short_description.unwrap_or("".to_string())}
+                                <div class="card-body">
+                                    <div class="card-image" style=format!(
+                                        "background-image: url({});", 
+                                        {&project
+                                            .image
+                                            .clone()
+                                            .unwrap_or("".to_string())}) />
+                                    <p>{ &project.description }</p>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="card-image" style=format!("background-image: url({});", {&project.image.clone().unwrap_or("".to_string())}) />
-                                <p>{ &project.description }</p>
-                            </div>
-                        </div>
-                    }).collect_view()
-                    
-                }
+                        }).collect_view()
+                    }
+                </div>
+                <div class="overlay cards-inner" node_ref=overlay />
             </div>
         </section>
     }
