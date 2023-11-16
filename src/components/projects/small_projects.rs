@@ -59,8 +59,6 @@ pub fn SmallProjects() -> impl IntoView {
         
     ];
 
-    let target = create_node_ref::<html::Div>();
-
     let onmousedown: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
         let binding: web_sys::EventTarget = e.target().expect("should have a target");
         let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
@@ -110,7 +108,7 @@ pub fn SmallProjects() -> impl IntoView {
 
     view! {
         <section class="small-contact" id="contact">
-            <div class="small-projects-container" node_ref=target>
+            <div class="small-projects-container">
             { 
                 small_projects.iter().map(|project| {
                     view! {
