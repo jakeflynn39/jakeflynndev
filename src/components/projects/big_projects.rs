@@ -60,7 +60,12 @@ pub fn BigProjects() -> impl IntoView {
     let document = use_document();
 
     let cards_container = create_node_ref::<html::Div>();
-    let overlay = create_node_ref::<html::Div>();
+    let overlay: NodeRef<html::Div> = create_node_ref::<html::Div>();
+
+    let mut projects_refs: Vec<NodeRef<html::Div>> = vec![];
+    for _ in 0..big_projects.len() {
+        projects_refs.push(create_node_ref::<html::Div>());
+    }
 
     let set_overlay = move |e: PointerEvent, leaving: bool| {
         let cards = cards_container
@@ -130,9 +135,11 @@ pub fn BigProjects() -> impl IntoView {
         <section class="big-projects-cards" id="projects" on:pointermove=apply_overlay_mask on:pointerout=remove_overlay>
             <div class="cards">
                 <div class="cards-inner" node_ref=cards_container>
-                    {big_projects.into_iter()
-                        .map(|project| view! {
-                            <div class="card">
+                    {big_projects
+                        .into_iter()
+                        .zip(projects_refs)
+                        .map(|(project, project_ref)| view! {
+                            <div class="card" node_ref=project_ref>
                                 <div class="card-header">
                                     <div class="full">
                                         <div class="title">

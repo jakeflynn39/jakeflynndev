@@ -64,7 +64,7 @@ pub fn SmallProjects() -> impl IntoView {
         
     ];
 
-    let onmousedown: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
+    let onmousedown = move|e: MouseEvent| {
         let binding: web_sys::EventTarget = e.target().expect("should have a target");
         let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
 
@@ -75,9 +75,9 @@ pub fn SmallProjects() -> impl IntoView {
                 small_project.class_list().add_1("clicked").unwrap();
             }
         }
-    });
+    };
 
-    let ontouchstart: Callback<TouchEvent> = Callback::from(move|e: TouchEvent| {
+    let ontouchstart = move|e: TouchEvent| {
         let binding: web_sys::EventTarget = e.target().expect("should have a target");
         let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
 
@@ -96,9 +96,9 @@ pub fn SmallProjects() -> impl IntoView {
                 small_project.class_list().add_1("clicked").unwrap();
             }
         }
-    });
+    };
 
-    let onmouseleave: Callback<MouseEvent> = Callback::from(move|e: MouseEvent| {
+    let onmouseleave = move|e: MouseEvent| {
         let binding: web_sys::EventTarget = e.target().expect("should have a target");
         let target: Option<&HtmlElement> = binding.dyn_ref::<HtmlElement>();
 
@@ -109,13 +109,15 @@ pub fn SmallProjects() -> impl IntoView {
                 small_project.class_list().remove_1("clicked").unwrap();
             }
         }
-    });
+    };
 
     view! {
         <section class="small-contact" id="contact">
             <div class="small-projects-container">
             { 
-                small_projects.iter().map(|project| {
+                small_projects
+                    .iter()
+                    .map(|project| {
                     view! {
                         <div class="small-project" on:mousedown=onmousedown on:touchstart=ontouchstart on:mouseleave=onmouseleave>
                             <div class="full small">

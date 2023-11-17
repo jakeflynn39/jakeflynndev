@@ -146,7 +146,7 @@ pub fn Hero() -> impl IntoView {
         .map(char::from)
         .collect::<String>();
 
-    let onmousemove: Callback<MouseEvent> = Callback::from(move|_: MouseEvent| {
+    let onmousemove = move|_: MouseEvent| {
         let document: web_sys::Document = get_document();
         if let Some(skills) = document.get_element_by_id("skills") {
             skills.set_inner_html(&rand::thread_rng()
@@ -155,14 +155,14 @@ pub fn Hero() -> impl IntoView {
                 .map(char::from)
                 .collect::<String>());
         }
-    });
+    };
 
-    let onmouseleave: Callback<MouseEvent> = Callback::from(move|_: MouseEvent| {
+    let onmouseleave = move|_: MouseEvent| {
         let document: web_sys::Document = get_document();
         if let Some(skills) = document.get_element_by_id("skills") {
             skills.set_inner_html(&base_definition);
         }
-    });
+    };
     
     async fn set_text_on_mount(final_text: &str) {
         let document: web_sys::Document = get_document();
