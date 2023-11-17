@@ -112,7 +112,7 @@ pub fn SmallProjects() -> impl IntoView {
     };
 
     view! {
-        <section class="small-contact" id="contact">
+        <div class="small-contact">
             <div class="small-projects-container">
             { 
                 small_projects
@@ -134,7 +134,7 @@ pub fn SmallProjects() -> impl IntoView {
                 }).collect_view()
             }
             </div>
-            <div class="contact">
+            <section class="contact" id="contact">
                 <h1>{ "Let's Connect!" }</h1>
                 <h2>{ "Open to new opportunites" }</h2>
                 <div class="image">
@@ -150,7 +150,7 @@ pub fn SmallProjects() -> impl IntoView {
                         { "Resume" }
                     </a>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     }
 }

@@ -5,8 +5,13 @@
   padding: 60px 0;
   position: relative;
 
+  @media (max-width: $mobile) {
+    padding-top: 20px;
+  }
+
   .hero-text {
     display: inline-block;
+    width: 100%;
 
     h1 {
       margin: 10px 0;
@@ -15,6 +20,7 @@
       color: #d9dfe3;
 
       @media (max-width: $mobile) {
+        text-align: center;
         font-size: 64px;
       }
     }
@@ -27,6 +33,7 @@
       font-family: "Roboto Mono", monospace;
 
       @media (max-width: $mobile) {
+        text-align: center;
         font-size: 18px;
       }
     }
@@ -40,7 +47,7 @@
       background-color: #d9dfe3;
 
       @media (max-width: $mobile) {
-        width: 120px;
+        width: 100%;
       }
     }
   }

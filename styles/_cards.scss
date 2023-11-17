@@ -139,6 +139,10 @@
           opacity: 0.9;
           z-index: 2;
           transition: all 200ms ease-in;
+
+          @media (max-width: $mobile) {
+            opacity: 1;
+          }
         }
 
         p {
