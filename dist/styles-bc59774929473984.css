@@ -411,7 +411,7 @@ header .header-container .filler {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
   }
 }
 .small-contact .small-projects-container {
@@ -751,7 +751,8 @@ header .header-container .filler {
 }
 @media (max-width: 768px) {
   .about-me {
-    padding: 20px 0;
+    padding: 0;
+    padding-bottom: 10px;
   }
 }
 .about-me .about-section p {
@@ -765,10 +766,6 @@ header .header-container .filler {
   .about-me .about-section p {
     font-size: 18px;
   }
-}
-
-body.light .about-me .about-section p {
-  color: #1f1f1f;
 }
 
 footer {

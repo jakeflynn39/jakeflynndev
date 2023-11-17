@@ -4,7 +4,8 @@
   padding: 60px 0;
 
   @media (max-width: $mobile) {
-    padding: 20px 0;
+    padding: 0;
+    padding-bottom: 10px;
   }
 
   .about-section {
@@ -17,16 +18,6 @@
 
       @media (max-width: $mobile) {
         font-size: 18px;
-      }
-    }
-  }
-}
-
-body.light {
-  .about-me {
-    .about-section {
-      p {
-        color: #1f1f1f;
       }
     }
   }
