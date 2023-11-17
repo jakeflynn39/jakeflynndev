@@ -1,6 +1,7 @@
 use leptos::*;
 use leptos_use::*;
-use web_sys::PointerEvent;
+use web_sys::{PointerEvent, WheelEvent};
+use wasm_bindgen::JsCast;
 use crate::{ProjectInfo, Color};
 
 
@@ -67,7 +68,7 @@ pub fn BigProjects() -> impl IntoView {
         projects_refs.push(create_node_ref::<html::Div>());
     }
 
-    let set_overlay = move |e: PointerEvent, leaving: bool| {
+    let set_overlay = move |e: &ev::Event, leaving: bool| {
         let cards = cards_container
             .get()
             .expect("input_ref should be loaded by now");
@@ -84,8 +85,18 @@ pub fn BigProjects() -> impl IntoView {
             .scroll_x()
             .expect("problem getting scroll width");
 
-        let x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
-        let y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
+        let x: f64;
+        let y: f64;
+
+        let _ = if let Some(e) = e.dyn_ref::<PointerEvent>() {
+            x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
+            y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
+        } else if let Some(e) = e.dyn_ref::<WheelEvent>() {
+            x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
+            y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
+        } else {
+            panic!("event is neither a pointer event nor a wheel event");
+        };
 
         let opacity = if leaving { 0 } else { 1 };
 
@@ -97,13 +108,18 @@ pub fn BigProjects() -> impl IntoView {
     };
 
     let set_overlay_clone = set_overlay.clone();
+    let another_clone = set_overlay.clone();
 
     let apply_overlay_mask = move |e: PointerEvent| {
-        set_overlay(e, false);
+        set_overlay(&e, false);
     };
 
     let remove_overlay = move |e: PointerEvent| {
-        set_overlay_clone(e, true);
+        set_overlay_clone(&e, true);
+    };
+
+    let apply_overlay_scroll = move |e: WheelEvent| {
+        another_clone(&e, false);
     };
 
     create_effect(move |_| {
@@ -132,7 +148,13 @@ pub fn BigProjects() -> impl IntoView {
     });
 
     view! {
-        <section class="big-projects-cards" id="projects" on:pointermove=apply_overlay_mask on:pointerout=remove_overlay>
+        <section 
+            class="big-projects-cards" 
+            id="projects" 
+            on:pointermove=apply_overlay_mask 
+            on:pointerout=remove_overlay 
+            on:wheel=apply_overlay_scroll
+        >
             <div class="cards">
                 <div class="cards-inner" node_ref=cards_container>
                     {big_projects
