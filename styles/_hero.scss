@@ -1,5 +1,4 @@
 @use "variables" as *;
-@use "sass:math";
 
 .hero {
   padding: 60px 0;
@@ -11,7 +10,10 @@
 
   .hero-text {
     display: inline-block;
-    width: 100%;
+
+    @media (max-width: $mobile) {
+      width: 100%;
+    }
 
     h1 {
       margin: 10px 0;

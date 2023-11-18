@@ -78,6 +78,7 @@ header .header-container .menu-container .menu {
   header .header-container .menu-container .menu.hidden {
     visibility: hidden;
     opacity: 0;
+    transition: all 0s;
   }
 }
 header .header-container .menu-container .menu a {
@@ -608,7 +609,11 @@ header .header-container .menu-container .hamburger .hamburger-icon.open span:nt
 }
 .hero .hero-text {
   display: inline-block;
-  width: 100%;
+}
+@media (max-width: 768px) {
+  .hero .hero-text {
+    width: 100%;
+  }
 }
 .hero .hero-text h1 {
   margin: 10px 0;
