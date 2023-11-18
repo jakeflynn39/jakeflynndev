@@ -25,9 +25,6 @@ pub mod components {
         pub mod footer;
     }
 }
-pub mod routes {
-    pub mod projects;
-}
 pub mod utils;
 use components::header::header::Header;
 use components::hero::hero::Hero;
@@ -35,27 +32,24 @@ use components::about::about::About;
 use components::projects::big_projects::BigProjects;
 use components::projects::small_projects::SmallProjects;
 use components::footer::footer::Footer;
-use routes::projects::Projects;
-use utils::project_url_to_paramter;
 
 #[component]
 fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
-        <Router>
-            <main>
-                <div class="page-container">
-                    <Header />
+        <main>
+            <div class="page-container">
+                <Header />  
+                <Router>
                     <Routes>
                         <Route path="/" view=Home/>
-                        <Route path="/project/:name" view=Projects/>
                         <Route path="/*any" view=Error/>
                     </Routes>
-                </div>
-                <Footer />
-            </main>
-        </Router>
+                </Router>
+            </div>
+            <Footer />
+        </main>
     }
 }
 
@@ -90,7 +84,6 @@ pub struct ProjectInfo {
     pub description: String,
     pub short_description: Option<String>,
     pub link: String,
-    pub new_tab: bool,
     pub image: Option<String>,
     pub color: Option<Color>,
 }
@@ -100,17 +93,4 @@ pub struct Color {
     pub hue: f64,
     pub saturation: f64,
     pub lightness: f64,
-}
-
-pub enum ProjectRoutes {
-    HoopsForecast,
-    ShotQuality,
-    Research,
-    ConcussionDetection,
-    DailyTweets,
-    EvBetting,
-    PerfectPitch,
-    GriffySharps,
-    ThisWebsite,
-    Error,
 }

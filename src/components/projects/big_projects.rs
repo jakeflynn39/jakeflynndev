@@ -15,7 +15,6 @@ pub fn BigProjects() -> impl IntoView {
                 throughout the NBA season."#.to_string(),
             short_description: Some(r#"Web app"#.to_string()),
             link: "https://hoopsforecast.com".to_string(),
-            new_tab: true,
             image: Some("https://us.canvasartrocks.com/cdn/shop/products/Basketball_court_Wall_Mural_Wallpaper_a_1400x.jpg?v=1571715105".to_string()),
             color: Some(Color {hue: 165.0, saturation: 82.86, lightness: 51.37}),
         },
@@ -26,7 +25,6 @@ pub fn BigProjects() -> impl IntoView {
                 page loading times and SEO, amongst other endless Jira tickets"#.to_string(),
             short_description: Some(r#"Freelance"#.to_string()),
             link: "https://shotqualitybets.com/".to_string(),
-            new_tab: true,
             image: Some("https://www.sportsbusinessjournal.com/-/media/Images/Daily/2023/03/17/SBJ-Tech/shot-quality.ashx".to_string()),
             color: Some(Color {hue: 291.34, saturation: 95.9, lightness: 61.76}),
         },
@@ -37,7 +35,6 @@ pub fn BigProjects() -> impl IntoView {
                 of the Guinness World Record-winning team for creating the whitest and coolest (literally) paint."#.to_string(),
             short_description: Some(r#"ML Research"#.to_string()),
             link: "https://www.purdue.edu/newsroom/releases/2023/Q1/purdues-worlds-whitest-paint-wins-2023-sxsw-innovation-award.html".to_string(),
-            new_tab: true,
             image: Some("https://www.purdue.edu/uns/images/2021/ruan-xiulin-portraitLO.jpg".to_string()),
             color: Some(Color {hue: 338.69, saturation: 100.0, lightness: 48.04}),
         },
@@ -48,8 +45,7 @@ pub fn BigProjects() -> impl IntoView {
                 The development included a custom-made PCB board and a user-friendly interface, resulting in a project that 
                 achieved a top 5 ranking in our engineering class."#.to_string(),
             short_description: Some(r#"Embedded Systems"#.to_string()),
-            link: "/project/concussion-detection".to_string(),
-            new_tab: false,
+            link: "/static/senior_design_poster.pdf".to_string(),
             image: Some("https://mattlaw.com/wp-content/uploads/2016/10/traumatic-brain-injury-symptoms.jpg".to_string()),
             color: Some(Color {hue: 97.5, saturation: 83.71, lightness: 69.0}),
         },
@@ -167,7 +163,7 @@ pub fn BigProjects() -> impl IntoView {
                                         <div class="title">
                                             <h2>{ &project.name }</h2>
                                         </div>
-                                        <a href={&project.link} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
+                                        <a href={&project.link} class="link" target="_blank">
                                             <i class="gg-link" />
                                         </a>
                                     </div>

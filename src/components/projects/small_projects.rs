@@ -13,7 +13,6 @@ pub fn SmallProjects() -> impl IntoView {
                 so it is completely automated."#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/daily-messages/".to_string(),
-            new_tab: true,
             image: None,
             color: None,
         },
@@ -23,7 +22,6 @@ pub fn SmallProjects() -> impl IntoView {
                 offered by sportsbooks to calculate positive expected value bets in just a few seconds."#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/oddsjam-api-plus-ev-calculator".to_string(),
-            new_tab: true,
             image: None,
             color: None,
         },
@@ -35,7 +33,6 @@ pub fn SmallProjects() -> impl IntoView {
                 would be happy to give you access."#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/perfect-pitch".to_string(),
-            new_tab: true,
             image: None,
             color: None,
         },
@@ -46,7 +43,6 @@ pub fn SmallProjects() -> impl IntoView {
                 betting profitability in the future. Uses Python, Pandas, NumPy, and Matplotlib"#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/griffy-sharps".to_string(),
-            new_tab: true,
             image: None,
             color: None,
         },
@@ -57,7 +53,6 @@ pub fn SmallProjects() -> impl IntoView {
                 framework"#.to_string(),
             short_description: None,
             link: "https://github.com/jakeflynn39/jakeflynndev".to_string(),
-            new_tab: true,
             image: None,
             color: None,
         },
@@ -124,7 +119,7 @@ pub fn SmallProjects() -> impl IntoView {
                                 <div class="title">
                                     <h2>{ &project.name }</h2>
                                 </div>
-                                <a href={&project.link} class="link" target={if project.new_tab { "_blank" } else { "_self" }}>
+                                <a href={&project.link} class="link" target="_blank">
                                     <i class="gg-link" />
                                 </a>
                             </div>

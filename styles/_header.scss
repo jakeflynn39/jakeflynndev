@@ -9,22 +9,27 @@ header {
   }
 
   .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
     height: 100px;
 
     @media (max-width: $mobile) {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: auto;
     }
 
     .logo-container {
-      flex-grow: 1;
+      // flex-grow: 1;
       display: flex;
       align-items: center;
       justify-content: center;
 
       .logo {
+        display: block;
         flex: 1;
         max-width: 70px;
         height: auto;
@@ -32,6 +37,7 @@ header {
     }
 
     .menu-container {
+      // flex-grow: 1;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -268,7 +274,7 @@ header {
     }
 
     .filler {
-      flex-grow: 1;
+      // flex-grow: 1;
       @media (max-width: $mobile) {
         display: none;
       }
