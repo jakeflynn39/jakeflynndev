@@ -1,7 +1,6 @@
 use leptos::*;
 use leptos_use::*;
 use web_sys::{PointerEvent, WheelEvent};
-use wasm_bindgen::JsCast;
 use crate::{ProjectInfo, Color};
 
 
@@ -64,8 +63,7 @@ pub fn BigProjects() -> impl IntoView {
         projects_refs.push(create_node_ref::<html::Div>());
     }
 
-    // TODO: accept events that have e.page_x() and e.page_y() as well
-    let set_overlay = move |e: &ev::Event, leaving: bool| {
+    let set_overlay = move |e: &dyn PageCoords, leaving: bool| {
         let cards = cards_container
             .get()
             .expect("input_ref should be loaded by now");
@@ -82,19 +80,8 @@ pub fn BigProjects() -> impl IntoView {
             .scroll_x()
             .expect("problem getting scroll width");
 
-        let x: f64;
-        let y: f64;
-
-        // TODO: treat each event the same
-        let _ = if let Some(e) = e.dyn_ref::<PointerEvent>() {
-            x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
-            y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
-        } else if let Some(e) = e.dyn_ref::<WheelEvent>() {
-            x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
-            y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
-        } else {
-            panic!("event is neither a pointer event nor a wheel event");
-        };
+        let x = f64::from(e.trait_page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
+        let y = f64::from(e.trait_page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
 
         let opacity = if leaving { 0 } else { 1 };
 
@@ -189,5 +176,30 @@ pub fn BigProjects() -> impl IntoView {
                 <div class="overlay cards-inner" node_ref=overlay />
             </div>
         </section>
+    }
+}
+
+trait PageCoords {
+    fn trait_page_x(&self) -> i32;
+    fn trait_page_y(&self) -> i32;
+}
+
+impl PageCoords for PointerEvent {
+    fn trait_page_x(&self) -> i32 {
+        self.page_x()
+    }
+
+    fn trait_page_y(&self) -> i32 {
+        self.page_y()
+    }
+}
+
+impl PageCoords for WheelEvent {
+    fn trait_page_x(&self) -> i32 {
+        self.page_x()
+    }
+
+    fn trait_page_y(&self) -> i32 {
+        self.page_y()
     }
 }
