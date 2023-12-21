@@ -64,6 +64,7 @@ pub fn BigProjects() -> impl IntoView {
         projects_refs.push(create_node_ref::<html::Div>());
     }
 
+    // TODO: accept events that have e.page_x() and e.page_y() as well
     let set_overlay = move |e: &ev::Event, leaving: bool| {
         let cards = cards_container
             .get()
@@ -84,6 +85,7 @@ pub fn BigProjects() -> impl IntoView {
         let x: f64;
         let y: f64;
 
+        // TODO: treat each event the same
         let _ = if let Some(e) = e.dyn_ref::<PointerEvent>() {
             x = f64::from(e.page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
             y = f64::from(e.page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
