@@ -80,8 +80,8 @@ pub fn BigProjects() -> impl IntoView {
             .scroll_x()
             .expect("problem getting scroll width");
 
-        let x = f64::from(e.trait_page_x()) - cards.get_bounding_client_rect().x() - scroll_width;
-        let y = f64::from(e.trait_page_y()) - cards.get_bounding_client_rect().y() - scroll_height;
+        let x = e.trait_page_x() - cards.get_bounding_client_rect().x() - scroll_width;
+        let y = e.trait_page_y() - cards.get_bounding_client_rect().y() - scroll_height;
 
         let opacity = if leaving { 0 } else { 1 };
 
@@ -180,26 +180,26 @@ pub fn BigProjects() -> impl IntoView {
 }
 
 trait PageCoords {
-    fn trait_page_x(&self) -> i32;
-    fn trait_page_y(&self) -> i32;
+    fn trait_page_x(&self) -> f64;
+    fn trait_page_y(&self) -> f64;
 }
 
 impl PageCoords for PointerEvent {
-    fn trait_page_x(&self) -> i32 {
-        self.page_x()
+    fn trait_page_x(&self) -> f64 {
+        f64::from(self.page_x())
     }
 
-    fn trait_page_y(&self) -> i32 {
-        self.page_y()
+    fn trait_page_y(&self) -> f64 {
+        f64::from(self.page_y())
     }
 }
 
 impl PageCoords for WheelEvent {
-    fn trait_page_x(&self) -> i32 {
-        self.page_x()
+    fn trait_page_x(&self) -> f64 {
+        f64::from(self.page_x())
     }
 
-    fn trait_page_y(&self) -> i32 {
-        self.page_y()
+    fn trait_page_y(&self) -> f64 {
+        f64::from(self.page_y())
     }
 }
