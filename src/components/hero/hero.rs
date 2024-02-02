@@ -137,7 +137,7 @@ pub fn Hero() -> impl IntoView {
     let mut skills_sorted: [Skills; 18] = skills.clone();
     skills_sorted.sort_by(|a, b| a.y.cmp(&b.y));
 
-    let base_definition: String = "Full Stack Software Developer".to_string();
+    let base_definition: String = "Full Stack Web Developer".to_string();
     let base_length: usize = base_definition.len();
     let base_definition_clone = base_definition.clone();
     let random_definition: String = rand::thread_rng()

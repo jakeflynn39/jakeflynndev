@@ -198,7 +198,7 @@ impl PageCoords for WheelEvent {
     fn trait_page_x(&self) -> f64 {
         f64::from(self.page_x())
     }
-
+    
     fn trait_page_y(&self) -> f64 {
         f64::from(self.page_y())
     }
